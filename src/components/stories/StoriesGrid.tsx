@@ -10,6 +10,7 @@ export interface Story {
    title: string;
    body: string;
    image?: string;
+   featured_image_alt_text?: string;
    link?: string;
    date?: string;
    author_name?: string;
@@ -43,7 +44,7 @@ export function StoryCard({ s, trackHeader, trackCategory }: { s: Story; trackHe
             <div>
                <div className="relative aspect-[16/12] bg-gradient-to-br from-brand via-brand-bright to-ocean overflow-hidden">
                   {s.image ? (
-                     <Image src={s.image} alt={s.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                     <Image src={s.image} alt={s.featured_image_alt_text?.trim() ? s.featured_image_alt_text : s.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                   ) : (
                      <div className="absolute inset-0 opacity-25 [background:radial-gradient(circle_at_25%_70%,#ffffff_0,transparent_45%)]" />
                   )}
@@ -115,6 +116,7 @@ function StoriesGridInner() {
                title: blog.title,
                body: blog.excerpt,
                image: blog.featured_image,
+               featured_image_alt_text: blog.featured_image_alt_text || "",
                link: `/blog/${blog.slug}`,
                date: blog.publish_at || blog.created_at,
                author_name: blog.author_name,
@@ -273,7 +275,7 @@ export function StoriesGrid() {
       <Suspense
          fallback={
             <div className="h-96 w-full flex items-center justify-center bg-brand-white">
-               Loading stories...
+               Loading blogs...
             </div>
          }
       >

@@ -162,7 +162,7 @@ export default async function NewsDetailPage({
           <div className="absolute inset-0 bg-black/60 z-10" />
           <Image
             src={story.featured_image}
-            alt={story.title}
+            alt={story.featured_image_alt_text?.trim() ? story.featured_image_alt_text : story.title}
             fill
             className="object-cover"
             priority

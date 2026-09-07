@@ -65,6 +65,8 @@ export default function BlogForm({
 
       featured_image: "",
 
+      featured_image_alt_text: "", 
+
       og_image: "",
 
       meta_title: "",
@@ -183,6 +185,7 @@ export default function BlogForm({
             blockquote: blog.blockquote || "",
             category: blog.categories || [],
             featured_image: blog.featured_image || "",
+            featured_image_alt_text: blog.featured_image_alt_text || "",
             og_image: blog.og_image || "",
             meta_title: blog.meta_title || "",
             meta_description: blog.meta_description || "",
@@ -588,6 +591,11 @@ export default function BlogForm({
          formData.append(
             "featured_image_path",
             form.featured_image
+         );
+
+         formData.append(
+            "featured_image_alt_text",
+            form.featured_image_alt_text
          );
 
          formData.append(
@@ -1398,6 +1406,21 @@ export default function BlogForm({
                            {imageError}
                         </p>
                      )}
+
+                      {/* featured image alt text */}
+                     <div className="flex flex-col gap-2 mt-4">
+                        <label htmlFor="featured_image_alt_text" className="font-medium text-sm text-gray-700">
+                           Featured Image Alt Text
+                        </label>
+                        <textarea
+                           id="featured_image_alt_text"
+                           name="featured_image_alt_text"
+                           value={form.featured_image_alt_text}
+                           onChange={(e) => setForm({ ...form, featured_image_alt_text: e.target.value })}
+                           rows={3}
+                           className="form-control w-full resize-none border p-2 rounded-md text-sm outline-none"
+                        />
+                     </div>
                   </div>
                </div>
                {/* OG Image */}

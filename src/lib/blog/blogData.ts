@@ -6,6 +6,7 @@ export function getBlogData(body: any) {
     body.blockquote,
     JSON.stringify(body.sections),
     body.featured_image,
+    body.featured_image_alt_text || null,
     body.categories.join(","),
     body.meta_title,
     body.meta_description,

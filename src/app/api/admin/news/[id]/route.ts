@@ -24,7 +24,7 @@ export async function PUT(
     }
 
     const { id } = await params;
-
+    const reqClone = req.clone();
     const body: any = await parseBlogForm(req);
 
     // Featured Image
@@ -62,11 +62,14 @@ export async function PUT(
 
     }
 
+    let finalAltText = (await reqClone.formData()).get("featured_image_alt_text")?.toString() || null;
+    body.featured_image_alt_text = finalAltText || body.featured_image_alt_text || null;
+
     const blogData = getBlogData(body);
     const dbParams = [
-      ...blogData.slice(0, 14),
+      ...blogData.slice(0, 15),
       "news", // blog_type
-      ...blogData.slice(14),
+      ...blogData.slice(15),
       id,
     ];
 
@@ -80,6 +83,7 @@ export async function PUT(
         blockquote=?,
         content=?,
         featured_image=?,
+        featured_image_alt_text=?,
         category=?,
         meta_title=?,
         meta_description=?,
