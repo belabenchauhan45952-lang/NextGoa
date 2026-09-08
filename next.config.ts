@@ -49,22 +49,22 @@ const nextConfig: NextConfig = {
       {
         source: '/faculty-of-physiotherapy',
         destination: '/faculty/physiotherapy',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/faculty-of-nursing',
         destination: '/faculty/nursing',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/faculty-of-pharmacy',
         destination: '/faculty/pharmacy',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/faculty-of-management-studies',
         destination: '/faculty/management',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/faculty/management-studies',
