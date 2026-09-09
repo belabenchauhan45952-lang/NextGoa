@@ -95,15 +95,15 @@ export default function StudentGrievancesPage() {
         </div>
 
         {/* Table Section */}
-        <div className="w-full overflow-hidden rounded-[20px] shadow-sm bg-white mt-4 border border-zinc-200">
-          {/* Cyan Header */}
+        {/*<div className="w-full overflow-hidden rounded-[20px] shadow-sm bg-white mt-4 border border-zinc-200">
+          {/* Cyan Header 
           <div className="bg-[#0CAADD] py-6 px-4 text-center">
             <h2 className="text-white font-bold text-[32px] sm:text-[40px] tracking-tight">
               Grievance Redressal Committee
             </h2>
           </div>
 
-          {/* Responsive Table Wrapper */}
+          {/* Responsive Table Wrapper 
           <div className="w-full overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[800px]">
               <thead>
@@ -135,7 +135,7 @@ export default function StudentGrievancesPage() {
             </table>
           </div>
         </div>
-
+*/}
       </section>
 
     </main>
