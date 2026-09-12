@@ -97,7 +97,8 @@ export async function PUT(
         publish_at=?,
         author_name=?,
         author_linkedin=?,
-        faculty_id=?
+        faculty_id=?,
+        author_id=?
       WHERE id=?
       `,
       dbParams
@@ -110,7 +111,7 @@ export async function PUT(
 
     return NextResponse.json({
       success: true,
-      message: "Blog updated successfully",
+      message: "Blog updated successfully11ewrwerwerw3453",
     });
 
   } catch (error: any) {
@@ -180,6 +181,7 @@ export async function GET(
     const { id } = await params;
 
     const blog = await getBlog(id);
+
 
     if (!blog) {
       return NextResponse.json(

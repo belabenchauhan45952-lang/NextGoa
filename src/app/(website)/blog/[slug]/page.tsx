@@ -20,8 +20,13 @@ export async function generateMetadata({
 
   const [rows]: any = await db.query(
     `
-    SELECT *
-    FROM blogs
+    SELECT
+      b.*,
+      a.name AS authors_name,
+      a.short_description AS authors_description,
+      a.linkedin_url AS authors_linkedin
+    FROM blogs b
+    LEFT JOIN authors a ON b.author_id = a.id
     WHERE slug=?
     LIMIT 1
     `,
@@ -82,8 +87,13 @@ export default async function StoryPage({
 
   const [rows]: any = await db.query(
     `
-  SELECT *
-  FROM blogs
+  SELECT
+      b.*,
+      a.name AS authors_name,
+      a.short_description AS authors_description,
+      a.linkedin_url AS authors_linkedin
+    FROM blogs b
+    LEFT JOIN authors a ON b.author_id = a.id
   WHERE slug=?
   LIMIT 1
   `,
@@ -172,27 +182,80 @@ export default async function StoryPage({
                   {new Date(story.publish_at || story.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                 </span>
               )}
-              {(story.publish_at || story.created_at) && story.author_name && <span className="opacity-60 hidden sm:inline">|</span>}
-              {story.author_name && (
-                <span className="flex items-center gap-2">
+              {(story.publish_at || story.created_at) && story.authors_name && <span className="opacity-60 hidden sm:inline">|</span>}
+              {story.authors_name && (
+                <span className="flex items-center gap-2 relative group/author">
                   <User size={16} className="opacity-80" />
-                  {story.author_linkedin ? (
-                    <a href={story.author_linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white transition-colors group">
-                      <span className="leading-none">{story.author_name}</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="opacity-80 group-hover:opacity-100 transition-all mt-[3px]">
-                        {/* Donut Background (White -> Blue) */}
-                        <path className="fill-current group-hover:text-[#0077b5] transition-colors" d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
-                        {/* Inner 'in' text (Transparent -> White) */}
-                        <path fill="transparent" className="group-hover:fill-white transition-colors" d="M10 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
+
+                  {story.authors_linkedin ? (
+                    <a
+                      href={story.authors_linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 hover:text-white transition-colors group/link"
+                    >
+                      <span className="leading-none">{story.authors_name}</span>
+                      <svg xmlns="http://w3.org" width="16" height="16" viewBox="0 0 24 24" className="opacity-80 group-hover/link:opacity-100 transition-all">
+                        <path className="fill-current group-hover/link:text-[#0077b5] transition-colors" d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
                       </svg>
                     </a>
                   ) : (
-                    story.author_name
+                    <span className="cursor-pointer">{story.authors_name}</span>
+                  )}
+
+                  {/* --- NEW HOVER CARD POPUP SECTION --- */}
+                  {/* --- HOVER CARD POPUP SECTION --- */}
+                  {story.authors_description && (
+                    <div className="author-tooltip absolute z-50 bg-white p-4 rounded-xl shadow-xl border border-gray-100 w-80 text-left">
+                      <div className="author-tooltip-content flex flex-col gap-2">
+
+                        {/* Author Biography Text */}
+                        <p className="author-bio text-sm leading-relaxed text-gray-800 m-0 pb-1">
+                          {story.authors_description}
+                        </p>
+
+                        {/* Conditionally Rendered Divider and Icon Area 
+                        {story.authors_linkedin && (
+                          <div className="w-full block pt-1">
+
+                            {/* HIGH-CONTRAST SOLID DIVIDER LINE 
+                            <div className="w-full h-[1px] bg-gray-200 my-2 block" />
+
+                            {/* LINKEDIN LOGO CONTAINER 
+                            <div className="flex justify-end items-center my-2">
+                              <a
+                                href={story.authors_linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center w-7 h-7 rounded bg-[#0077b5] hover:bg-[#005582] transition-colors"
+                                aria-label={`LinkedIn profile of ${story.authors_name}`}
+                              >
+                                {/* Official full LinkedIn "in" vector graphic 
+                                <svg
+                                  xmlns="http://w3.org"
+                                  width="14"
+                                  height="14"
+                                  viewBox="0 0 24 24"
+                                  style={{ fill: '#ffffff', display: 'block' }}
+                                >
+                                  <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                                </svg>
+                              </a>
+                            </div>
+                          </div>
+                        )}
+                      */}
+                      </div>
+
+                      {/* Tooltip Arrow */}
+                      <div className="author-tooltip-arrow" />
+                    </div>
                   )}
                 </span>
               )}
+
             </div>
-            
+
             <div className="shrink-0">
               <ShareButtons url={`/blog/${slug}`} title={story.title} />
             </div>

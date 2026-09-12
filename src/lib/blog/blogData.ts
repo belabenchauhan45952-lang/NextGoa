@@ -1,4 +1,5 @@
 export function getBlogData(body: any) {
+  
   return [
     body.title,
     body.slug,
@@ -20,5 +21,6 @@ export function getBlogData(body: any) {
     body.author_name,
     body.author_linkedin,
     body.faculty_id.join(","),
+    body.author_id ? Number(body.author_id) : null,
   ];
 }

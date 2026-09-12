@@ -14,7 +14,7 @@ export interface Story {
    featured_image_alt_text?: string;
    link?: string;
    date?: string;
-   author_name?: string;
+   authors_name?: string;
 }
 
 const STORIES_PER_PAGE = 8;
@@ -55,11 +55,11 @@ function StoryCard({ s, trackHeader, trackCategory, eventName }: { s: Story; tra
                            {new Date(s.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                         </span>
                      )}
-                     {s.date && s.author_name && <span>|</span>}
-                     {s.author_name && (
+                     {s.date && s.authors_name && <span>|</span>}
+                     {s.authors_name && (
                         <span className="flex items-center gap-1.5">
                            <User size={14} className="text-brand" />
-                           {s.author_name}
+                           {s.authors_name}
                         </span>
                      )}
                   </div>
@@ -101,7 +101,7 @@ function NewsGridInner() {
                featured_image_alt_text: blog.featured_image_alt_text || "",
                link: `/news/${blog.slug}`,
                date: blog.publish_at || blog.created_at,
-               author_name: blog.author_name,
+               authors_name: blog.authors_name,
             }));
             setStories(formatted);
          } catch (err) {

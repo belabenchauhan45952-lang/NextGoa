@@ -99,7 +99,8 @@ export async function PUT(
         publish_at=?,
         author_name=?,
         author_linkedin=?,
-        faculty_id=?
+        faculty_id=?,
+        author_id=?
       WHERE id=?
       `,
       dbParams

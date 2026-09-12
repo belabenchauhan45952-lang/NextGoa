@@ -17,6 +17,7 @@ export interface BlogFormData {
 
   status: string;
   publish_at: string;
+  author_id: string | null; 
   author_name: string | null;
   author_linkedin: string | null;
   faculty_id: string[];
@@ -27,6 +28,7 @@ export interface BlogFormData {
   ogImage: File | null;
 
   featured_image_path: string;
+  featured_image_alt_text: string | null;
   og_image_path: string;
 
   // Runtime ma assign thase
@@ -66,6 +68,7 @@ export async function parseBlogForm(
     status: (formData.get("status") as string) || "draft",
 
     publish_at: (formData.get("publish_at") as string) || "",
+    author_id: (formData.get("author_id") as string) || null,
     author_name: (formData.get("author_name") as string) || null,
     author_linkedin: (formData.get("author_linkedin") as string) || null,
     faculty_id: JSON.parse(
@@ -84,6 +87,8 @@ export async function parseBlogForm(
 
     featured_image_path:
       (formData.get("featured_image_path") as string) || "",
+
+    featured_image_alt_text: (formData.get("featured_image_alt_text") as string) || null,
 
     og_image_path:
       (formData.get("og_image_path") as string) || "",

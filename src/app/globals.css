@@ -459,3 +459,107 @@ img, svg {
 .search-input{
   padding: 0px 40px;
 }
+
+/* --- AUTHOR HOVER POPUP PANEL STYLES --- */
+.author-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 450px;
+  margin-bottom: 12px;
+  padding: 20px;
+
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 12px;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+
+  transition:
+    opacity 200ms ease-out,
+    transform 200ms ease-out;
+
+  z-index: 50;
+
+  /* FORCE SYSTEM-UI FONT FAMILY */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+.group\/author:hover .author-tooltip {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.author-tooltip-content {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.author-bio {
+  margin: 0;
+  color: #000;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.625;
+  letter-spacing: 0.025em;
+  text-align: left;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* .author-name {
+  margin-right: 6px;
+  color: #000;
+  font-weight: 700;
+} */
+
+.author-linkedin {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  color: #ffffff;
+
+  transition: color 150ms ease;
+}
+
+.author-linkedin:hover {
+  color: #0077b5;
+}
+
+.author-tooltip-arrow {
+  position: absolute;
+  top: 100%;
+  left: 16px;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+
+  transform: rotate(45deg);
+  margin-top: -5px;
+}
+/* Invisible hover bridge to prevent card from closing */
+.author-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 20px; /* Bridges the margin gap completely */
+  background: transparent;
+  pointer-events: auto;
+}
+
+/* Ensure the main tooltip keeps pointer events active */
+.author-tooltip {
+  pointer-events: auto !important;
+}

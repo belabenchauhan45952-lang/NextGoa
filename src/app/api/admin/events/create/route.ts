@@ -31,9 +31,9 @@ export async function POST(req: NextRequest) {
 
     const blogData = getBlogData(body);
     const params = [
-      ...blogData.slice(0, 14),
+      ...blogData.slice(0, 15),
       "event", // blog_type
-      ...blogData.slice(14),
+      ...blogData.slice(15),
     ];
 
     const [result]: any = await db.execute(
@@ -45,6 +45,7 @@ export async function POST(req: NextRequest) {
         blockquote,
         content,
         featured_image,
+        featured_image_alt_text,
         category,
         meta_title,
         meta_description,
@@ -58,9 +59,10 @@ export async function POST(req: NextRequest) {
         publish_at,
         author_name,
         author_linkedin,
-        faculty_id
+        faculty_id,
+        author_id
       )
-      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
       `,
       params
     );

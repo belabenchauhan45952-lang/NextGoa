@@ -51,6 +51,8 @@ export default function BlogForm({
    const [publishDate, setPublishDate] =
       useState("");
 
+   const [authors, setAuthors] = useState<{ id: string; name: string }[]>([]);
+
    const [form, setForm] = useState({
 
       title: "",
@@ -83,7 +85,11 @@ export default function BlogForm({
 
       status: "draft",
 
+      author_id: "",
+
       author_name: "",
+
+
       author_linkedin: "",
 
       faculty_id: [] as string[],
@@ -161,6 +167,30 @@ export default function BlogForm({
    }
 
    // ===============================
+   // Load Authors
+   // ===============================
+
+   async function loadAuthors() {
+
+      try {
+
+         const res = await fetch(
+            "/api/admin/authors"
+         );
+
+         const data = await res.json();
+
+         setAuthors(data);
+
+      } catch (err) {
+
+         console.log(err);
+
+      }
+
+   }
+
+   // ===============================
    // Load Blog (Edit)
    // ===============================
 
@@ -195,6 +225,7 @@ export default function BlogForm({
             og_description: blog.og_description || "",
             status: blog.status || "draft",
             author_name: blog.author_name || "",
+            author_id: blog.author_id ? String(blog.author_id) : "", 
             author_linkedin: blog.author_linkedin || "",
             faculty_id: blog.faculty_id ? String(blog.faculty_id).split(",") : [],
          });
@@ -234,6 +265,8 @@ export default function BlogForm({
       loadCategories();
 
       loadFaculties();
+
+      loadAuthors();
 
       if (isEdit) {
 
@@ -565,6 +598,7 @@ export default function BlogForm({
             publishDate
          );
 
+   
          formData.append(
             "author_name",
             form.author_name
@@ -578,6 +612,12 @@ export default function BlogForm({
             "faculty_id",
             JSON.stringify(form.faculty_id)
          );
+
+         formData.append(
+            "author_id",
+            form.author_id
+         );
+
 
          // FAQ
 
@@ -1270,7 +1310,7 @@ export default function BlogForm({
                      )}
 
                      {/* Author Name */}
-                     <div className="py-4">
+                     {/* <div className="py-4">
                         <label className="form-label font-medium mb-2 block">
                            Author's Name
                         </label>
@@ -1282,7 +1322,25 @@ export default function BlogForm({
                            className="form-control w-full"
                            placeholder="e.g. Author Name"
                         />
+                     </div> */}
+
+                     <div className="flex flex-col gap-1">
+                        <label className="text-sm font-medium text-gray-700">Author's Name</label>
+                        <select
+                           name="author_id"
+                           value={form.author_id} 
+                           onChange={handleChange}
+                           className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
+                        >
+                           <option value="">Select an Author</option>
+                           {authors.map((author) => (
+                              <option key={author.id} value={String(author.id)}> {/* 🟢 String values match state */}
+                                 {author.name}
+                              </option>
+                           ))}
+                        </select>
                      </div>
+
                      <div>
                         <label className="block text-sm font-medium text-ink mb-1.5">
                            Author's LinkedIn URL (Optional)

@@ -5,12 +5,16 @@ export default async function LatestArticlesGrid({ currentBlogId }: { currentBlo
   const [rows]: any = await db.query(
     `
     SELECT b.*, 
+      a.name AS authors_name,
+      a.short_description AS authors_description,
+      a.linkedin_url AS authors_linkedin,
       (
         SELECT GROUP_CONCAT(c.name SEPARATOR ', ')
         FROM blog_categories c
         WHERE FIND_IN_SET(c.id, b.category)
       ) AS category_names
     FROM blogs b
+    LEFT JOIN authors a ON b.author_id = a.id
     WHERE b.id != ? AND b.status = 'published' 
     ORDER BY COALESCE(b.publish_at, b.created_at) DESC 
     LIMIT 2
@@ -28,7 +32,7 @@ export default async function LatestArticlesGrid({ currentBlogId }: { currentBlo
     image: blog.featured_image,
     link: `/blog/${blog.slug}`,
     date: blog.publish_at || blog.created_at,
-    author_name: blog.author_name,
+    authors_name: blog.authors_name,
   }));
 
   return (
