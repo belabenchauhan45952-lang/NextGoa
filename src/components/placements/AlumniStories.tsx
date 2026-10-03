@@ -5,14 +5,6 @@ import Image from 'next/image';
 
 const stories = [
   {
-    names: "Tanish Patel",
-    batch: "B.Tech. CSE, Class of 2027",
-    quote: "Honored to be selected for this opportunity! A huge thank you to the placements at Parul University for their incredible support in making this happen. Excited for the journey ahead at Microsoft!",
-    company: "Microsoft",
-    package: "₹60 LPA",
-    image: "/placements/Tanish Patel.jpg"
-  },
-  {
     names: "Suraj Jagtap",
     batch: "B.Tech. CSE, Class of 2027",
     quote: "Grateful for this huge milestone! Thanks to placements at Parul University for always pushing me forward and believing in my journey. Excited to dive in and make the most of this opportunity!",

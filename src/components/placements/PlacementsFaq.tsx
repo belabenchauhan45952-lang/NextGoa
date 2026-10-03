@@ -5,7 +5,7 @@ import { useState } from "react";
 const placementFaqs = [
   {
     question: "What is the highest package at PU?",
-    answer: "The highest reported package across the Parul ecosystem is ₹60 LPA, secured by B.Tech CSE students Tanish Patel and Suraj Jagtap from the 2027 batch at Parul University, Vadodara. Average and median packages vary by faculty and programme - confirmed in the placement report.",
+    answer: "The highest reported package across the Parul ecosystem is ₹60 LPA, secured by B.Tech CSE student and Suraj Jagtap from the 2027 batch at Parul University, Vadodara. Average and median packages vary by faculty and programme - confirmed in the placement report.",
   },
   {
     question: "Will placements be available for the first PU Goa batch?",
