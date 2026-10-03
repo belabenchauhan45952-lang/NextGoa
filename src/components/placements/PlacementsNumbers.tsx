@@ -1,7 +1,26 @@
+"use client";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { Animated2200Icon } from "@/components/placements/Animated2200Icon";
 
 export function PlacementsNumbers() {
+
+   const banners = [
+    "/placements/placement-banner-1.png",
+    "/placements/placement-banner-2.png",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // 2. Setup interval for auto-updating every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [banners.length]);
+
   return (
     <section className="relative w-full z-10 overflow-hidden bg-transparent text-white -mt-6 sm:-mt-12 py-16 sm:py-24"
       style={{
@@ -80,85 +99,46 @@ export function PlacementsNumbers() {
           Three decades of placement results, distilled.
         </p>
 
-        {/* ── Headline package card from landing page ── */}
-        <div className="relative mt-6 sm:mt-6 w-full sm:pt-16" style={{ overflow: "visible" }}>
-          {/* ── MOBILE CARD (vertical, shown below sm) ── */}
-          <div className="sm:hidden relative mx-auto w-full rounded-[24px] bg-[#E73649] text-white shadow-lg overflow-hidden flex flex-col" style={{ minHeight: "330px" }}>
-            {/* Text content */}
-            <div className="p-6 pb-0 flex flex-col justify-start relative z-20">
-              <div>
-                <span className="whitespace-nowrap inline-block rounded-full bg-white px-4 py-1.5 font-[family-name:var(--font-poppins)] font-normal text-[14px] text-[#1F1F1F]">
-                  Highest Package - Batch of 2025 - 26
-                </span>
+     {/* ── Auto-Updating Image Slider ── */}
+        <div className="relative mt-6 sm:mt-12 w-full rounded-[24px] overflow-hidden pb-10">
+          
+          {/* Images Layout Container */}
+          <div className="relative w-full h-full min-h-[140px] sm:min-h-[280px]">
+            {banners.map((src, index) => (
+              <div
+                key={src}
+                className={`w-full transition-opacity duration-700 ease-in-out ${
+                  index === currentIndex 
+                    ? "relative opacity-100 z-10 block" 
+                    : "absolute inset-0 opacity-0 z-0 hidden"
+                }`}
+              >
+                <img
+                  src={src}
+                  alt={`Placement Banner ${index + 1}`}
+                  className="w-full h-auto object-contain block mx-auto rounded-[24px]"
+                />
               </div>
-              <div className="mt-4 flex items-end gap-1 text-white">
-                <span className="font-[family-name:var(--font-gotham)] font-bold leading-none" style={{ fontSize: "64px" }}>₹60</span>
-                <span className="mb-2 font-[family-name:var(--font-gotham)] font-bold text-2xl">LPA<span className="text-[#FEDB2F]">*</span></span>
-              </div>
-              <div className="w-full h-px bg-white/30 my-4" />
-              <p className="font-[family-name:var(--font-poppins)] font-normal text-[15px] leading-relaxed text-white/90">
-                Awarded to two B.Tech. CSE students (Batch of 2027) in a single recruitment
-                cycle. It&apos;s the benchmark the PU ecosystem is producing today.
-              </p>
-            </div>
-            
-            {/* Image at bottom */}
-            <div className="relative mt-2 z-10 w-full flex-grow flex items-end justify-center pointer-events-none">
-              <Image
-                src="/Image-opt.webp"
-                alt="MS Dhoni with Parul University students"
-                className="w-[110%] max-w-none ml-[5%] block"
-                style={{ marginBottom: "-56px" }}
-              width={1200} height={1200} />
-            </div>
+            ))}
           </div>
 
-          {/* ── DESKTOP CARD (horizontal, shown at sm+) ── */}
-          <div
-            className="hidden sm:block overflow-hidden rounded-[24px] bg-[#E73649] text-white shadow-lg text-left"
-            style={{ minHeight: "340px", position: "relative" }}
-          >
-            {/* Left: text content */}
-            <div className="p-12 lg:p-16 flex flex-col justify-center max-w-[45%]" style={{ minHeight: "340px" }}>
-              <div>
-                <span className="whitespace-nowrap inline-block rounded-full bg-white px-5 py-2 font-[family-name:var(--font-poppins)] font-normal text-[16px] text-[#1F1F1F]">
-                  Highest Package - Batch of 2025 - 26
-                </span>
-              </div>
-              <div className="mt-5 flex items-end gap-2 text-white">
-                <span className="font-[family-name:var(--font-gotham)] font-bold leading-none" style={{ fontSize: "110px" }}>₹60</span>
-                <span className="mb-3 font-[family-name:var(--font-gotham)] font-bold text-5xl">LPA<span className="text-[#FEDB2F]">*</span></span>
-              </div>
-              <div className="w-full h-px bg-white/30 my-4" />
-              <p className="font-[family-name:var(--font-poppins)] font-normal text-[15px] leading-[1.65] text-white/95">
-                Awarded to two B.Tech. CSE students (Batch of 2027) in a single recruitment
-                cycle. It&apos;s the benchmark the PU ecosystem is producing today.
-              </p>
-            </div>
-          </div>
-
-          {/* Desktop photo - wrapped to clip bottom-right corner but allow pop-out at top */}
-          <div
-            className="hidden sm:block absolute right-0 bottom-0 z-10 w-[62%] pointer-events-none rounded-br-[24px]"
-            style={{
-              top: "-200px", // Extends high up so the head is never clipped
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              src="/Image-opt.webp"
-              alt="MS Dhoni with Parul University students"
-              style={{
-                position: "absolute",
-                bottom: "-56px", // Increased from -38px to account for larger image scale
-                right: 0,
-                width: "100%",
-                height: "auto",
-              }}
-            width={1200} height={1200} />
+          {/* Dot Navigation Indicators */}
+          <div className="absolute bottom-3 left-0 right-0 z-20 flex justify-center gap-2">
+            {banners.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to slide ${index + 1}`}
+                className={`h-2 sm:h-2.5 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? "w-6 sm:w-8 bg-[#FEDB2F]" 
+                    : "w-2 sm:w-2.5 bg-white/40 hover:bg-white/80"
+                }`}
+              />
+            ))}
           </div>
         </div>
-
+        
         {/* 2200++ Recruiting companies line */}
         <div className="mt-10 sm:mt-12 flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-12 w-full max-w-5xl">
           <div className="flex-shrink-0">
@@ -178,6 +158,7 @@ export function PlacementsNumbers() {
         </div>
 
       </div>
+
     </section>
   );
 }

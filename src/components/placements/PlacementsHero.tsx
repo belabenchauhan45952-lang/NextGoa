@@ -11,12 +11,12 @@ const desktopImages = [
   "/placements/carousel/Desktop/capgemini 157.png",
   "/placements/carousel/Desktop/cognizant 86.png",
   "/placements/carousel/Desktop/hexawarw 36.png",
-  "/placements/carousel/Desktop/Microsoft.png",
+  // "/placements/carousel/Desktop/Microsoft.png",
 ];
 
 const mobileImages = [
   "/placements/carousel/Mobile/HCL.png",
-  "/placements/carousel/Mobile/Cognizant 88.png", // Assuming correspondence
+  //"/placements/carousel/Mobile/Cognizant 88.png", // Assuming correspondence
   "/placements/carousel/Mobile/Reliance 109.png",
   "/placements/carousel/Mobile/TCS 253.png",
   "/placements/carousel/Mobile/Capegeminni 157.png",
