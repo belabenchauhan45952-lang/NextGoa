@@ -1,26 +1,7 @@
-"use client";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { Animated2200Icon } from "@/components/placements/Animated2200Icon";
 
 export function PlacementsNumbers() {
-
-   const banners = [
-    "/placements/placement-banner-1.png",
-    "/placements/placement-banner-2.png",
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // 2. Setup interval for auto-updating every 4 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
-    }, 4000);
-
-    return () => clearInterval(timer);
-  }, [banners.length]);
-
   return (
     <section className="relative w-full z-10 overflow-hidden bg-transparent text-white -mt-6 sm:-mt-12 py-16 sm:py-24"
       style={{
@@ -99,46 +80,17 @@ export function PlacementsNumbers() {
           Three decades of placement results, distilled.
         </p>
 
-     {/* ── Auto-Updating Image Slider ── */}
-        <div className="relative mt-6 sm:mt-12 w-full rounded-[24px] overflow-hidden pb-10">
-          
-          {/* Images Layout Container */}
-          <div className="relative w-full h-full min-h-[140px] sm:min-h-[280px]">
-            {banners.map((src, index) => (
-              <div
-                key={src}
-                className={`w-full transition-opacity duration-700 ease-in-out ${
-                  index === currentIndex 
-                    ? "relative opacity-100 z-10 block" 
-                    : "absolute inset-0 opacity-0 z-0 hidden"
-                }`}
-              >
-                <img
-                  src={src}
-                  alt={`Placement Banner ${index + 1}`}
-                  className="w-full h-auto object-contain block mx-auto rounded-[24px]"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Dot Navigation Indicators */}
-          <div className="absolute bottom-3 left-0 right-0 z-20 flex justify-center gap-2">
-            {banners.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                aria-label={`Go to slide ${index + 1}`}
-                className={`h-2 sm:h-2.5 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? "w-6 sm:w-8 bg-[#FEDB2F]" 
-                    : "w-2 sm:w-2.5 bg-white/40 hover:bg-white/80"
-                }`}
-              />
-            ))}
+        {/* ── Single Image Banner ── */}
+        <div className="relative mt-6 sm:mt-12 w-full rounded-[24px] overflow-hidden">
+          <div className="w-full min-h-[140px] sm:min-h-[280px]">
+            <img
+              src="/placements/pu_goa_placement_banner_bluebg.png"
+              alt="Placement Banner"
+              className="w-full h-auto object-contain block mx-auto rounded-[24px]"
+            />
           </div>
         </div>
-        
+
         {/* 2200++ Recruiting companies line */}
         <div className="mt-10 sm:mt-12 flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-12 w-full max-w-5xl">
           <div className="flex-shrink-0">
@@ -158,7 +110,6 @@ export function PlacementsNumbers() {
         </div>
 
       </div>
-
     </section>
   );
 }

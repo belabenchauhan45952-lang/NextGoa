@@ -1,8 +1,6 @@
 
-"use client";
 import Image from "next/image";
 import { Eyebrow } from "./Decor";
-import { useState, useEffect } from "react";
 // import { TwoThousandPlusIcon } from "./TwoThousandPlusIcon";
 
 interface PlacementsProps {
@@ -52,22 +50,6 @@ export function Placements({ data, variant = "landing" }: PlacementsProps) {
 
   const recruiting = data?.recruiting || {};
 
-  const banners = [
-    "/placements/placement-banner-1.png",
-    "/placements/placement-banner-2.png",
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // 2. Setup interval for auto-updating every 4 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
-    }, 4000);
-
-    return () => clearInterval(timer);
-  }, [banners.length]);
-
   return (
     <section
       id="placements"
@@ -100,45 +82,16 @@ export function Placements({ data, variant = "landing" }: PlacementsProps) {
             : "Three decades of placement results, distilled."}
         </p>
 
-       {/* ── Auto-Updating Image Slider Replacing Static Cards ── */}
-        <div className="relative mt-8 w-full pb-3">
-          
-          {/* Images Layout Container Frame */}
-          <div className="relative w-full rounded-[24px] overflow-hidden shadow-lg min-h-[140px] sm:min-h-[280px]">
-            {banners.map((src, index) => (
-              <div
-                key={src}
-                className={`w-full transition-opacity duration-700 ease-in-out ${
-                  index === currentIndex 
-                    ? "relative opacity-100 z-10 block" 
-                    : "absolute inset-0 opacity-0 z-0 hidden"
-                }`}
-              >
-                <img
-                  src={src}
-                  alt={`Placement Banner ${index + 1}`}
-                  className="w-full h-auto object-contain block mx-auto rounded-[24px]"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* ── Corrected Dot Navigation with Custom Yellow Active Pill ── */}
-          <div className="absolute -bottom-6 left-0 right-0 z-20 flex justify-center items-center gap-2.5">
-            {banners.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                aria-label={`Go to slide ${index + 1}`}
-                className={`h-3.5 transition-all duration-300 rounded-full ${
-                  index === currentIndex 
-                    ? "w-10 bg-[#FEDB2F]" // Active state: Wide yellow pill shape
-                    : "w-3.5 bg-[#E5E7EB] " // Inactive state: Translucent round dot
-                }`}
-              />
-            ))}
-          </div>
+       {/* ── Single Image Banner ── */}
+      <div className="relative mt-6 sm:mt-12 w-full rounded-[24px] overflow-hidden">
+        <div className="w-full min-h-[140px] sm:min-h-[280px]">
+          <img
+            src="/placements/pu_goa_placement_banner_whitebg.png"
+            alt="Placement Banner"
+            className="w-full h-auto object-contain block mx-auto rounded-[24px]"
+          />
         </div>
+      </div>
 
         {/* Recruiting companies line */}
         <div className="mt-8 flex items-center justify-center gap-3.5 sm:gap-8">
