@@ -20,6 +20,7 @@ interface Vacancy {
 export default function ApplyPage() {
   const params = useParams();
   const slug = params?.slug as string;
+  const category = params?.category as string;
 
   const [job, setJob] = useState<Vacancy | null>(null);
   const [loading, setLoading] = useState(true);
@@ -93,7 +94,7 @@ export default function ApplyPage() {
           <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center h-full">
             {/* Left Content */}
             <div className="flex-1 flex flex-col justify-center w-full max-w-[800px] md:pr-8">
-              <Link href={`/careers/${job.position.toLowerCase().replace(/\s+/g, '-')}/${job.slug}`} className="text-[#111111] hover:opacity-80 transition-opacity mb-4 md:mb-6 font-medium text-sm w-fit flex items-center gap-2">
+              <Link href={`/careers/${category}/${job.slug}`} className="text-[#111111] hover:opacity-80 transition-opacity mb-4 md:mb-6 font-medium text-sm w-fit flex items-center gap-2">
                 &larr; Back to Job Details
               </Link>
               
@@ -115,7 +116,7 @@ export default function ApplyPage() {
         <div className="max-w-[1140px] mx-auto px-6 lg:px-12 bg-white p-8 lg:p-12 rounded-[2rem] border border-gray-200 shadow-sm mt-12 md:mt-[5vw]">
           <h2 className="text-3xl font-extrabold mb-10 text-[#111111]">Basic Details</h2>
           
-          <ApplyForm jobId={job.id} jobSlug={job.slug} jobTitle={job.title} />
+          <ApplyForm jobId={job.id} jobSlug={job.slug} jobTitle={job.title} jobCategory={category} />
         </div>
       </section>
     </main>

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function ApplyForm({ jobId, jobSlug, jobTitle }: { jobId: number, jobSlug: string, jobTitle?: string }) {
+export default function ApplyForm({ jobId, jobSlug, jobTitle, jobCategory }: { jobId: number, jobSlug: string, jobTitle?: string, jobCategory: string }) {
   const router = useRouter();
   const [fileName, setFileName] = useState<string | null>(null);
   const [formData, setFormData] = useState({
@@ -40,7 +40,7 @@ export default function ApplyForm({ jobId, jobSlug, jobTitle }: { jobId: number,
       const result = await res.json();
 
       if (result.success) {
-        router.push(`/careers/${jobSlug}/success`);
+        router.push(`/careers/${jobCategory}/${jobSlug}/success`);
       } else {
         alert(result.message);
       }

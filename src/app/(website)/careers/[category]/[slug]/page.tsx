@@ -42,6 +42,7 @@ interface Vacancy {
 export default function CareerDetailsPage() {
   const params = useParams();
   const slug = params?.slug as string;
+  const category = params?.category as string;
 
   const [job, setJob] = useState<Vacancy | null>(null);
   const [loading, setLoading] = useState(true);
@@ -136,7 +137,7 @@ export default function CareerDetailsPage() {
               </h1>
               
               {/* CTA */}
-              <Link href={`/careers/${job.slug}/apply`} className="bg-[#EF3341] hover:bg-[#D92A36] transition-colors text-white text-[16px] md:text-[18px] font-bold px-8 py-3 md:px-10 md:py-3.5 rounded-full w-fit shadow-md text-center">
+              <Link href={`/careers/${category}/${job.slug}/apply`} className="bg-[#EF3341] hover:bg-[#D92A36] transition-colors text-white text-[16px] md:text-[18px] font-bold px-8 py-3 md:px-10 md:py-3.5 rounded-full w-fit shadow-md text-center">
                 Apply Now
               </Link>
             </div>
