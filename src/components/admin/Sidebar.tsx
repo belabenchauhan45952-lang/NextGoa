@@ -48,6 +48,11 @@ export default async function Sidebar() {
       ],
     },
     {
+      title: "Authors",
+      href: "/admin/authors",
+      permission: "authors",
+    },
+    {
       title: "Jobs",
       permission: "carrers",
       children: [
