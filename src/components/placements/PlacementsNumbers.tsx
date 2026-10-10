@@ -73,10 +73,10 @@ export function PlacementsNumbers() {
         <p className="text-white mb-2 text-center section-subheading">
           Numbers That Matter
         </p>
-        <h2 className="text-center text-white section-heading">
+        <h2 className="text-center text-white section-heading mb-1 sm:mb-2">
           The ecosystem in figures.
         </h2>
-        <p className="text-center text-white/90 section-body">
+        <p className="text-center text-white/90 section-body" style={{ marginTop: '0.7rem' }}>
           Three decades of placement results, distilled.
         </p>
 
@@ -84,7 +84,7 @@ export function PlacementsNumbers() {
         <div className="relative mt-6 sm:mt-12 w-full rounded-[24px] overflow-hidden">
           <div className="w-full min-h-[140px] sm:min-h-[280px]">
             <img
-              src="/placements/pu_goa_placement_banner_bluebg.png"
+              src="/placements/pu-goa-placement-banner-placements.webp"
               alt="Placement Banner"
               className="w-full h-auto object-contain block mx-auto rounded-[24px]"
             />

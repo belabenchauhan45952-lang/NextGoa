@@ -68,89 +68,16 @@ export function Placements({ variant = "landing" }: { variant?: "landing" | "abo
           {isAbout ? "Figures from Parul University, Gujarat." : "Three decades of placement results, distilled."}
         </p>
 
-        {/* ── Headline package card ────────────────────────────────────────
-             Mobile  : vertical stack  - text top, photo bottom (inside card)
-             Desktop : horizontal band - text left, photo overflows above right
-        ──────────────────────────────────────────────────────────────────── */}
-
-        {/* Outer wrapper: on desktop only we add pt-16 for the photo overflow */}
-        <div className="relative mt-8 sm:pt-5" style={{ overflow: "visible" }}>
-
-          {/* ── MOBILE CARD (vertical, shown below sm) ── */}
-          <div className="sm:hidden relative mx-auto w-full rounded-[24px] bg-[#E73649] text-white shadow-lg overflow-hidden flex flex-col" style={{ minHeight: "330px" }}>
-            {/* Text content */}
-            <div className="p-6 pb-0 flex flex-col justify-start relative z-20">
-              <div>
-                <span className="whitespace-nowrap inline-block rounded-full bg-white px-4 py-2 mb-1 font-[family-name:var(--font-poppins)] font-normal text-[14px] text-[#1F1F1F]">
-                  Highest Package - Batch of 2025 - 26
-                </span>
-              </div>
-              <div className="mt-4 flex items-end gap-1 text-white">
-                <span className="font-[family-name:var(--font-gotham)] font-bold leading-none" style={{ fontSize: "64px" }}>₹60</span>
-                <span className="mb-2 font-[family-name:var(--font-gotham)] font-bold text-2xl">LPA<span className="text-[#FEDB2F]">*</span></span>
-              </div>
-              <div className="w-full h-px bg-white/30 my-4" />
-              <p className="section-body text-white/90">
-                Awarded to two B.Tech. CSE students (Batch of 2027) in a single recruitment
-                cycle. It&apos;s the benchmark the PU ecosystem is producing today.
-              </p>
-            </div>
-
-            {/* Image at bottom */}
-            <div className="relative mt-2 z-10 w-full flex-grow flex items-end justify-center pointer-events-none">
-              <Image
-                src="/Image-opt.webp"
-                alt="MS Dhoni with Parul University students"
-                className="w-[110%] max-w-none ml-[5%] block"
-                style={{ marginBottom: "-30px" }}
-              width={1200} height={1200} />
-            </div>
-          </div>
-
-          {/* ── DESKTOP CARD (horizontal, shown at sm+) ── */}
-          <div
-            className="hidden sm:block overflow-hidden rounded-[24px] bg-brand text-white shadow-lg text-left"
-            style={{ minHeight: "260px", position: "relative" }}
-          >
-            {/* Left: text content */}
-            <div className="p-10 flex flex-col justify-center max-w-[40%]" style={{ minHeight: "260px" }}>
-              <div>
-                <span className="whitespace-nowrap inline-block rounded-full bg-white px-5 py-2 font-[family-name:var(--font-poppins)] font-normal text-[20px] text-[#1F1F1F]">
-                  Highest Package - Batch of 2025 - 26
-                </span>
-              </div>
-              <div className="mt-5 flex items-end gap-2 text-white">
-                <span className="font-[family-name:var(--font-gotham)] font-bold leading-none" style={{ fontSize: "110px" }}>₹60</span>
-                <span className="mb-3 font-[family-name:var(--font-gotham)] font-bold text-5xl">LPA<span className="text-[#FEDB2F]">*</span></span>
-              </div>
-              <div className="w-full h-px bg-white/30 my-4" />
-              <p className="section-body text-white/90">
-                Awarded to two B.Tech. CSE students (Batch of 2027) in a single recruitment
-                cycle. It&apos;s the benchmark the PU ecosystem is producing today.
-              </p>
-            </div>
-          </div>
-
-          {/* Desktop photo - wrapped to clip bottom-right corner but allow pop-out at top */}
-          <div
-            className="hidden sm:block absolute right-0 bottom-0 z-10 w-[62%] pointer-events-none rounded-br-[24px]"
-            style={{
-              top: "-200px", // Extends high up so the head is never clipped
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              src="/Image-opt.webp"
-              alt="MS Dhoni with Parul University students"
-              style={{
-                position: "absolute",
-                bottom: "-38px", // Pulls the transparent padding down
-                right: 0,
-                width: "100%",
-                height: "auto",
-              }}
-            width={1200} height={1200} />
-          </div>
+        {/* ── Headline package card ──────────────────────────────────────── */}
+        <div className="relative mt-8 sm:pt-5 w-full rounded-[24px] overflow-hidden shadow-lg">
+          <Image
+            src="/placements/pu-goa-placement-banner-home.webp"
+            alt="Placement Highlights"
+            width={1200}
+            height={600}
+            className="w-full h-auto block"
+            priority
+          />
         </div>
 
         {/* Recruiting companies line */}

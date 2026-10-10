@@ -86,7 +86,7 @@ export function Placements({ data, variant = "landing" }: PlacementsProps) {
       <div className="relative mt-6 sm:mt-12 w-full rounded-[24px] overflow-hidden">
         <div className="w-full min-h-[140px] sm:min-h-[280px]">
           <img
-            src="/placements/pu_goa_placement_banner_whitebg.png"
+            src="/placements/pu-goa-placement-banner-home.webp"
             alt="Placement Banner"
             className="w-full h-auto object-contain block mx-auto rounded-[24px]"
           />
