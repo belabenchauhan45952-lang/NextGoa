@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Clock, User } from "lucide-react";
 import db from "@/lib/db";
+import { faqSchema } from "@/lib/structured-data";
+import { JsonLd } from "@/components/seo/JsonLd";
 import ShareButtons from "@/components/blog/ShareButtons";
 import SidebarLatestPosts from "@/components/blog/SidebarLatestPosts";
 import SidebarCategories from "@/components/blog/SidebarCategories";
@@ -352,6 +354,7 @@ export default async function NewsDetailPage({
               {/* FAQs inside left column */}
               {faqs.length > 0 && (
                 <div className="pt-8 border-t border-gray-100">
+                  <JsonLd data={faqSchema(faqs)} />
                   <h2 className="section-subheading mb-8">
                     Frequently Asked Questions
                   </h2>
