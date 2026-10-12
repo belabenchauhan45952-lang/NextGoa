@@ -74,19 +74,19 @@ export default function AuthorsPage() {
         <table className="min-w-full">
           <thead className="bg-white-50 border-light">
             <tr>
-              <th className="px-4 py-4 text-left font-semibold">
+              <th className="px-6 py-4 text-left font-semibold">
                 Name
               </th>
-              <th className="px-4 py-4 text-left font-semibold">
+              <th className="px-6 py-4 text-left font-semibold">
                 Short Description
               </th>
-              <th className="px-4 py-4 text-left font-semibold">
+              <th className="px-6 py-4 text-left font-semibold">
                 LinkedIn URL
               </th>
-              <th className="px-4 py-4 text-left font-semibold">
+              <th className="px-6 py-4 text-left font-semibold">
                 Status
               </th>
-              <th className="px-4 py-4 text-center font-semibold">
+              <th className="px-6 py-4 text-center font-semibold">
                 Actions
               </th>
             </tr>
@@ -98,17 +98,17 @@ export default function AuthorsPage() {
                 key={author.id}
                 className="border-light hover:bg-gray-50 transition"
               >
-                <td className="p-3">
+                <td className="px-6 py-4 font-medium text-gray-900">
                   {author.name}
                 </td>
 
-                <td className="p-3">
+                <td className="px-6 py-4">
                   <div className="max-w-md line-clamp-3 text-sm text-gray-600">
                     {author.short_description || "-"}
                   </div>
                 </td>
 
-                <td className="p-3">
+                <td className="px-6 py-4">
                   {author.linkedin_url ? (
                     <a href={author.linkedin_url} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
                       View Profile
@@ -118,7 +118,7 @@ export default function AuthorsPage() {
                   )}
                 </td>
 
-                <td className="p-3">
+                <td className="px-6 py-4">
                   <span
                     className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
                       author.status === "active"
@@ -130,7 +130,7 @@ export default function AuthorsPage() {
                   </span>
                 </td>
 
-                <td className="px-4 py-4">
+                <td className="px-6 py-4">
                   <div className="flex justify-center gap-2">
                     <Link
                       href={`/admin/authors/${author.id}`}
@@ -158,7 +158,7 @@ export default function AuthorsPage() {
           </div>
         )}
 
-        <div className="flex justify-between items-center p-3">
+        <div className="flex justify-between items-center px-6 py-4 border-t border-gray-100">
           <div>
             Showing {Math.min((page - 1) * limit + 1, total)} -{" "}
             {Math.min(page * limit, total)} of {total}

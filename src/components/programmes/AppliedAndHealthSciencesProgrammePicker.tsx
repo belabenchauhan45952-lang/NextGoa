@@ -27,7 +27,7 @@ export default function AppliedAndHealthSciencesProgrammePicker() {
         eligibility: "Candidate shall have passed 12th Examination in Science stream from a recognized board.", 
         intake: "60", 
         mode: "Full-time",
-        tuitionFee: "₹85,000",
+        tuitionFee: "₹95,000",
         specialisations: [],
         enquiryValue: spec === "Biotechnology" ? "bsc-biotech" : "bsc-microbio"
       })),
@@ -37,7 +37,7 @@ export default function AppliedAndHealthSciencesProgrammePicker() {
         eligibility: "Candidate shall have passed 12th Examination in Science stream from a recognized board.", 
         intake: "60", 
         mode: "Full-time",
-        tuitionFee: "₹85,000",
+        tuitionFee: "₹95,000",
         specialisations: [],
         enquiryValue: spec === "Biotechnology" ? "bsc-hons-biotech" : "bsc-hons-microbio"
       })),
@@ -48,7 +48,7 @@ export default function AppliedAndHealthSciencesProgrammePicker() {
         eligibility: "Candidate shall have passed 12th Examination in Science stream with Physics, Chemistry & Biology subjects from a recognized board.", 
         intake: "60", 
         mode: "Full-time",
-        tuitionFee: "₹85,000",
+        tuitionFee: "₹95,000",
         enquiryValue: "baott"
       },
       { 
@@ -57,22 +57,32 @@ export default function AppliedAndHealthSciencesProgrammePicker() {
         eligibility: "Candidate shall have passed 12th Examination in Science stream with Physics, Chemistry & Biology subjects from a recognized board.", 
         intake: "60", 
         mode: "Full-time",
-        tuitionFee: "₹85,000",
+        tuitionFee: "₹95,000",
         enquiryValue: "bmls"
       }
     ],
     "Master's": [
       // From Applied Sciences
-      ...["Biotechnology", "Microbiology"].map(spec => ({
-        title: `Master of Science (M.Sc.)\n${spec}`, 
-        duration: "2 Years", 
-        eligibility: `Candidate shall have passed B.Sc in ${spec}/Life Sciences from a recognized university.`, 
-        intake: "30", 
+      {
+        title: "Master of Science (M.Sc.)\nBiotechnology",
+        duration: "2 Years",
+        eligibility: "Candidate shall have passed B.Sc in Biotechnology/Life Sciences/Microbiology/Biochemistry/Botany/Zoology/Genetics from a recognized university.",
+        intake: "30",
         mode: "Full-time",
         tuitionFee: "₹1,10,000",
         specialisations: [],
-        enquiryValue: spec === "Biotechnology" ? "msc-biotech" : "msc-microbio"
-      }))
+        enquiryValue: "msc-biotech"
+      },
+      {
+        title: "Master of Science (M.Sc.)\nMicrobiology",
+        duration: "2 Years",
+        eligibility: "Candidate shall have passed B.Sc. in Microbiology/Life Sciences/Biotechnology from a recognized university.",
+        intake: "30",
+        mode: "Full-time",
+        tuitionFee: "₹1,10,000",
+        specialisations: [],
+        enquiryValue: "msc-microbio"
+      }
     ],
     "Doctoral Programs": [
       // From Allied Health
