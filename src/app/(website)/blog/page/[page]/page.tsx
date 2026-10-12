@@ -31,7 +31,7 @@ export default async function BlogPaginatedPage({ params }: Props) {
       `SELECT COUNT(*) as count FROM blogs WHERE status = 'published' AND blog_type = 'blog'`
     );
     const total = rows[0]?.count || 0;
-    totalPages = Math.ceil(total / 8); // STORIES_PER_PAGE = 8
+    totalPages = Math.ceil(total / 9); // STORIES_PER_PAGE = 9
   } catch (err) {
     console.error("Error fetching blog count:", err);
   }

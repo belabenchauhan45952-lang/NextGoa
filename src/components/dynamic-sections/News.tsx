@@ -77,24 +77,30 @@ export function News({ data }: NewsProps) {
       className="group flex flex-col justify-between overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:shadow-lg h-full"
     >
       <div className="flex flex-col h-full">
-        <div className="relative aspect-[16/12] bg-gradient-to-br from-brand via-brand-bright to-ocean overflow-hidden shrink-0">
-          {s.image ? (
-            <Image
-              src={s.image}
-              alt={s.title}
-              fill
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          ) : (
-            <div className="absolute inset-0 opacity-25 [background:radial-gradient(circle_at_25%_70%,#ffffff_0,transparent_45%)]" />
-          )}
+        <div className="p-3 sm:p-3.5 pb-0 shrink-0">
+          <div className="relative aspect-[16/11] rounded-2xl bg-gradient-to-br from-brand via-brand-bright to-ocean overflow-hidden">
+            {s.image ? (
+              <Image
+                src={s.image}
+                alt={s.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            ) : (
+              <div className="absolute inset-0 opacity-25 [background:radial-gradient(circle_at_25%_70%,#ffffff_0,transparent_45%)]" />
+            )}
+            {s.tag && (
+              <div className="absolute top-3 left-3 z-10">
+                <span className="inline-block rounded-full bg-white/95 backdrop-blur-md px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wide text-brand shadow-sm ring-1 ring-black/5">
+                  {s.tag}
+                </span>
+              </div>
+            )}
+          </div>
         </div>
-        <div className="p-7">
-          <span className={`inline-block rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-wide ${s.tagClass}`}>
-            {s.tag}
-          </span>
-          <h3 className="mt-4 font-poppins text-lg font-semibold leading-snug tracking-tight text-ink group-hover:text-brand transition-colors line-clamp-2">
+        <div className="px-6 pt-3 pb-5">
+          <h3 className="font-poppins text-lg font-semibold leading-snug tracking-tight text-ink group-hover:text-brand transition-colors line-clamp-2">
             {s.title}
           </h3>
           <p className="mt-3 font-[family-name:var(--font-poppins)] text-sm leading-relaxed text-ink/70 line-clamp-3">

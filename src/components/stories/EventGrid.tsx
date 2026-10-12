@@ -18,7 +18,7 @@ export interface Story {
    authors_name?: string;
 }
 
-const STORIES_PER_PAGE = 8;
+const STORIES_PER_PAGE = 9;
 
 function StoryCard({ s, trackHeader, trackCategory, eventName }: { s: Story; trackHeader?: string; trackCategory?: string; eventName?: string }) {
    return (
@@ -33,18 +33,24 @@ function StoryCard({ s, trackHeader, trackCategory, eventName }: { s: Story; tra
             data-track-text={s.title}
          >
             <div>
-               <div className="relative aspect-[16/12] bg-gradient-to-br from-brand via-brand-bright to-ocean overflow-hidden">
-                  {s.image ? (
-                     <Image src={s.image} alt={s.featured_image_alt_text?.trim() ? s.featured_image_alt_text : s.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                  ) : (
-                     <div className="absolute inset-0 opacity-25 [background:radial-gradient(circle_at_25%_70%,#ffffff_0,transparent_45%)]" />
-                  )}
+               <div className="p-3 sm:p-3.5 pb-0">
+                  <div className="relative aspect-[16/11] rounded-2xl bg-gradient-to-br from-brand via-brand-bright to-ocean overflow-hidden">
+                     {s.image ? (
+                        <Image src={s.image} alt={s.featured_image_alt_text?.trim() ? s.featured_image_alt_text : s.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                     ) : (
+                        <div className="absolute inset-0 opacity-25 [background:radial-gradient(circle_at_25%_70%,#ffffff_0,transparent_45%)]" />
+                     )}
+                     {s.tag && (
+                        <div className="absolute top-3 left-3 z-10">
+                           <span className="inline-block rounded-full bg-white/95 backdrop-blur-md px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wide text-brand shadow-sm ring-1 ring-black/5">
+                              {s.tag}
+                           </span>
+                        </div>
+                     )}
+                  </div>
                </div>
-               <div className="p-7">
-                  <span className={`inline-block rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-wide ${s.tagClass}`}>
-                     {s.tag}
-                  </span>
-                  <h3 className="mt-4 font-poppins text-lg font-semibold leading-snug tracking-tight text-ink group-hover:text-brand transition-colors line-clamp-2">
+               <div className="px-6 pt-3 pb-5">
+                  <h3 className="font-poppins text-lg font-semibold leading-snug tracking-tight text-ink group-hover:text-brand transition-colors line-clamp-2">
                      {s.title}
                   </h3>
                   
@@ -134,7 +140,7 @@ function EventGridInner() {
                   </div>
                ) : stories.length > 0 ? (
                   <>
-                     <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-8 transition-all duration-300">
+                     <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-6 transition-all duration-300">
                         {paginatedStories.map((s, index) => (
                            <StoryCard key={s.title + index} s={s} trackHeader="Events" trackCategory="All" eventName="event_click" />
                         ))}
@@ -146,46 +152,72 @@ function EventGridInner() {
                                  href={`/events${currentPage - 1 === 1 ? '' : `/page/${currentPage - 1}`}`}
                                  scroll={false}
                                  onClick={() => sessionStorage.setItem("skipScrollToTop", "true")}
-                                 className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#d62b3d]/20 bg-white text-[#d62b3d] hover:bg-[#d62b3d] hover:text-white transition-all duration-300"
+                                 className="flex items-center justify-center w-11 h-11 rounded-full border border-[#d62b3d]/20 bg-white text-[#d62b3d] hover:bg-[#d62b3d] hover:text-white transition-all duration-300"
+                                 aria-label="Previous page"
                               >
                                  <ChevronLeft size={18} />
                               </Link>
                            ) : (
-                              <button disabled className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#d62b3d]/20 bg-white text-[#d62b3d] transition-all duration-300 opacity-40">
+                              <button disabled className="flex items-center justify-center w-11 h-11 rounded-full border border-[#d62b3d]/20 bg-white text-[#d62b3d] transition-all duration-300 opacity-40 cursor-not-allowed" aria-label="Previous page">
                                  <ChevronLeft size={18} />
                               </button>
                            )}
 
-                           {Array.from({ length: totalPages }).map((_, i) => {
-                              const p = i + 1;
-                              const isCurrent = currentPage === p;
-                              return (
-                                 <Link
-                                    key={i}
-                                    href={`/events${p === 1 ? '' : `/page/${p}`}`}
-                                    scroll={false}
-                                    onClick={() => sessionStorage.setItem("skipScrollToTop", "true")}
-                                    className={`flex items-center justify-center w-11 h-11 rounded-full text-sm font-semibold transition-all duration-300 ${isCurrent
-                                       ? "bg-[#5B6933] text-white shadow-lg scale-105"
-                                       : "bg-white border border-gray-300 text-gray-700 hover:border-[#d62b3d] hover:text-[#d62b3d] hover:shadow"
-                                       }`}
-                                 >
-                                    {p}
-                                 </Link>
-                              );
-                           })}
+                           {(() => {
+                              const items: (number | string)[] = [];
+                              if (totalPages <= 6) {
+                                 for (let i = 1; i <= totalPages; i++) items.push(i);
+                              } else if (currentPage <= 4) {
+                                 items.push(1, 2, 3, 4, 5, "...", totalPages);
+                              } else if (currentPage >= totalPages - 3) {
+                                 items.push(1, "...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+                              } else {
+                                 items.push(1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages);
+                              }
+                              return items.map((item, idx) => {
+                                 if (item === "...") {
+                                    return (
+                                       <span key={`ellipsis-${idx}`} className="flex items-center justify-center w-8 h-11 text-gray-400 font-semibold text-sm tracking-widest select-none">
+                                          ...
+                                       </span>
+                                    );
+                                 }
+                                 const p = item as number;
+                                 const isCurrent = currentPage === p;
+                                 return isCurrent ? (
+                                    <span
+                                       key={p}
+                                       className="flex items-center justify-center w-11 h-11 rounded-full text-sm font-semibold transition-all duration-300 bg-[#5B6933] text-white shadow-lg scale-105"
+                                       aria-current="page"
+                                    >
+                                       {p}
+                                    </span>
+                                 ) : (
+                                    <Link
+                                       key={p}
+                                       href={`/events${p === 1 ? '' : `/page/${p}`}`}
+                                       scroll={false}
+                                       onClick={() => sessionStorage.setItem("skipScrollToTop", "true")}
+                                       className="flex items-center justify-center w-11 h-11 rounded-full text-sm font-semibold transition-all duration-300 bg-white border border-gray-300 text-gray-700 hover:border-[#d62b3d] hover:text-[#d62b3d] hover:shadow"
+                                    >
+                                       {p}
+                                    </Link>
+                                 );
+                              });
+                           })()}
 
                            {currentPage < totalPages ? (
                               <Link
                                  href={`/events/page/${currentPage + 1}`}
                                  scroll={false}
                                  onClick={() => sessionStorage.setItem("skipScrollToTop", "true")}
-                                 className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#5B6933]/20 bg-white text-[#5B6933] hover:bg-[#5B6933] hover:text-white transition-all duration-300"
+                                 className="flex items-center justify-center w-11 h-11 rounded-full border border-[#5B6933]/20 bg-white text-[#5B6933] hover:bg-[#5B6933] hover:text-white transition-all duration-300"
+                                 aria-label="Next page"
                               >
                                  <ChevronRight size={18} />
                               </Link>
                            ) : (
-                              <button disabled className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#5B6933]/20 bg-white text-[#5B6933] transition-all duration-300 opacity-40">
+                              <button disabled className="flex items-center justify-center w-11 h-11 rounded-full border border-[#5B6933]/20 bg-white text-[#5B6933] transition-all duration-300 opacity-40 cursor-not-allowed" aria-label="Next page">
                                  <ChevronRight size={18} />
                               </button>
                            )}

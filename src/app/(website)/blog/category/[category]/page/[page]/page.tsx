@@ -41,7 +41,7 @@ export default async function CategoryPagePaginated({ params }: Props) {
     const count = rows.filter((row: any) => 
       activeCatName ? (row.category_names || "").toLowerCase().includes(activeCatName.toLowerCase()) : true
     ).length;
-    totalPages = Math.ceil(count / 8); // STORIES_PER_PAGE = 8
+    totalPages = Math.ceil(count / 9); // STORIES_PER_PAGE = 9
   } catch (err) {
     console.error("Error fetching category blog count:", err);
   }
