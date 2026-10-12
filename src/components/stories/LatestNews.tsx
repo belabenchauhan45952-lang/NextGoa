@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Clock, User } from "lucide-react";
 import { Story } from "./NewsGrid";
 
 export function LatestNews() {
@@ -28,8 +29,10 @@ export function LatestNews() {
         title: blog.title,
         body: blog.excerpt,
         image: blog.featured_image,
+        featured_image_alt_text: blog.featured_image_alt_text || "",
         link: `/news/${blog.slug}`,
-        date: blog.created_at,
+        date: blog.publish_at || blog.created_at,
+        authors_name: blog.authors_name,
       }));
 
       setCarouselCards(formatted);
@@ -264,7 +267,7 @@ export function LatestNews() {
       <div className="mx-auto max-w-[1680px] px-6 sm:px-10">
 
         {/* Header content & Nav */}
-        <div className="w-full mb-8 sm:mb-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 relative z-10">
+        <div className="w-full mb-8 sm:mb-5 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 relative z-10">
           <div className="flex flex-row items-center gap-6 text-left">
             <div className="pointer-events-none select-none shrink-0">
               <img
@@ -310,7 +313,7 @@ export function LatestNews() {
 
         {/* Carousel Wrapper */}
         <div
-          className="relative mx-auto w-full max-w-[1680px] overflow-hidden px-4 md:px-0 select-none"
+          className="relative mx-auto w-full max-w-[1680px] overflow-hidden px-4 md:px-0 py-4 select-none"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
@@ -350,7 +353,7 @@ export function LatestNews() {
           `}} />
 
           <div
-            className="carousel-track-container-news -mx-2 md:-mx-3"
+            className="carousel-track-container-news -mx-2 md:-mx-3 py-2"
             onTransitionEnd={handleTransitionEnd}
           >
             {extendedCards.map((card, idx) => {
@@ -367,44 +370,77 @@ export function LatestNews() {
                     href={card.link || '#'}
                     onClick={(e) => { if (isSwiping.current) e.preventDefault(); }}
                     onDragStart={(e) => e.preventDefault()}
-                    className="rounded-[28px] bg-white shadow-md border border-black/5 overflow-hidden flex flex-col h-full group transition-all hover:shadow-lg"
+                    className="rounded-3xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden flex flex-col justify-between h-full group transition-all duration-300"
                     data-track
                     data-track-event="news_click"
                     data-track-header="Across all categories."
                     data-track-category="All"
                     data-track-text={card.title}
                   >
-                    {/* Top: Image */}
-                    <div className="relative w-full aspect-[16/11] bg-slate-100 overflow-hidden">
-                      {card.image ? (
-                        <Image
-                          src={card.image}
-                          alt={card.title}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                          priority={idx === 0 || idx === 1}
-                        />
-                      ) : (
-                        <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-bright to-ocean opacity-25 [background:radial-gradient(circle_at_25%_70%,#ffffff_0,transparent_45%)]" />
-                      )}
-                    </div>
+                    <div>
+                      {/* Top: Inset Image */}
+                      <div className="p-3 sm:p-3.5 pb-0">
+                        <div className="relative aspect-[16/11] rounded-2xl bg-gradient-to-br from-brand via-brand-bright to-ocean overflow-hidden">
+                          {card.image ? (
+                            <Image
+                              src={card.image}
+                              alt={card.featured_image_alt_text?.trim() ? card.featured_image_alt_text : card.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                              priority={idx === 0 || idx === 1}
+                            />
+                          ) : (
+                            <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-bright to-ocean opacity-25 [background:radial-gradient(circle_at_25%_70%,#ffffff_0,transparent_45%)]" />
+                          )}
+                          {card.tag && (
+                            <div className="absolute top-3 left-3 z-10">
+                              <span className="inline-block rounded-full bg-white/95 backdrop-blur-md px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wide text-brand shadow-sm ring-1 ring-black/5">
+                                {card.tag}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
 
-                    {/* Bottom: Text details */}
-                    <div className="p-6 flex flex-col justify-between flex-grow">
-                      <div>
-                        <span
-                          className={`inline-block rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider ${card.tagClass}`}
-                        >
-                          {card.tag}
-                        </span>
-                        <h3 className="mt-4 font-poppins text-lg font-bold leading-snug tracking-tight text-ink group-hover:text-brand transition-colors line-clamp-3">
+                      {/* Content details */}
+                      <div className="px-6 pt-3 pb-5">
+                        <h3 className="font-poppins text-lg font-semibold leading-snug tracking-tight text-ink group-hover:text-brand transition-colors line-clamp-2">
                           {card.title}
                         </h3>
-                        <p className="mt-2.5 font-[family-name:var(--font-poppins)] text-sm leading-relaxed text-ink/70 line-clamp-3">
+
+                        {/* Date & Author */}
+                        {(card.date || card.authors_name) && (
+                          <div className="flex items-center gap-2 mt-3 text-[13px] font-medium text-ink/80">
+                            {card.date && (
+                              <span className="flex items-center gap-1.5">
+                                <Clock size={14} className="text-brand" />
+                                {new Date(card.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                              </span>
+                            )}
+                            {card.date && card.authors_name && <span>|</span>}
+                            {card.authors_name && (
+                              <span className="flex items-center gap-1.5">
+                                <User size={14} className="text-brand" />
+                                {card.authors_name}
+                              </span>
+                            )}
+                          </div>
+                        )}
+
+                        <p className="mt-3 font-[family-name:var(--font-poppins)] text-sm leading-relaxed text-ink/70 line-clamp-3">
                           {card.body}
                         </p>
                       </div>
+                    </div>
+
+                    <div className="px-6 pb-6 pt-0">
+                      <span className="text-[15px] font-semibold text-brand/80 group-hover:text-brand flex items-center gap-1 transition-colors">
+                        Read More
+                        <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
                     </div>
                   </Link>
                 </div>
