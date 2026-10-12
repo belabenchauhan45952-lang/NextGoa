@@ -79,7 +79,7 @@ export function News() {
   };
 
   const CardContent = ({ s }: { s: any }) => (
-    <Link href={s.link || "#"} className="group flex flex-col justify-between overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:shadow-lg h-full">
+    <Link href={s.link || "#"} className="group flex flex-col justify-between overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5 transition-all duration-300 h-full">
       <div className="flex flex-col h-full">
         <div className="p-3 sm:p-3.5 pb-0 shrink-0">
           <div className="relative aspect-[16/11] rounded-2xl bg-gradient-to-br from-brand via-brand-bright to-ocean overflow-hidden">

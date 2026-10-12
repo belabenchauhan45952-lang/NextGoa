@@ -32,7 +32,7 @@ export const slugifyCategory = (name: string) => name.toLowerCase().replace(/[^a
 export function StoryCard({ s, trackHeader, trackCategory }: { s: Story; trackHeader?: string; trackCategory?: string }) {
    
    return (
-      <li className="group flex flex-col justify-between overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:shadow-lg">
+      <li className="group flex flex-col justify-between overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5 transition-all duration-300">
          <Link 
             href={s.link || '#'} 
             className="flex flex-col justify-between h-full"

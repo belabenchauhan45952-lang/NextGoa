@@ -74,7 +74,7 @@ export function News({ data }: NewsProps) {
       data-track-event="news_click"
       data-track-text={s.title}
       data-track-header={data?.eyebrow || "news & stories"}
-      className="group flex flex-col justify-between overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:shadow-lg h-full"
+      className="group flex flex-col justify-between overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5 transition-all duration-300 h-full"
     >
       <div className="flex flex-col h-full">
         <div className="p-3 sm:p-3.5 pb-0 shrink-0">
