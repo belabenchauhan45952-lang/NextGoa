@@ -24,7 +24,7 @@ export default function PhysiotherapyProgrammePicker() {
       eligibility: "10+2 with PCB (50% aggregate).", 
       intake: "100", 
       mode: "Full-time",
-      tuitionFee: "₹1,65,000",
+      tuitionFee: "₹2,00,000",
       enquiryValue: "bpt"
     }
   ];

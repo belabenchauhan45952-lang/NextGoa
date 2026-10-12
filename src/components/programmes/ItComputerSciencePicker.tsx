@@ -29,8 +29,8 @@ export default function ItComputerSciencePicker() {
     }
   }, []);
 
-  const bcaEligibility = "Passed 12th in any stream (Science/Commerce/Arts) with English and Maths or Statistics. If not in 12th, checked in 10th.";
-  const mcaEligibility = "Passed Graduation with minimum 50% for Open Category and 45% for Reserved Category from a recognized university.";
+  const bcaEligibility = "Candidate shall have passed 12th Examination in any stream (Science/ Commerce/Arts) with English and Maths or Statistics subject from a rocognized board. If candidate doesn't have these subjects in 12th then check for it in 10th.";
+  const mcaEligibility = "Candidate shall have passed Graduation with minimum 50% for Open Category and 45% for Reserved Category from a recognized university.";
 
   const specialisationsList = [
     "AI",
@@ -47,7 +47,7 @@ export default function ItComputerSciencePicker() {
       eligibility: bcaEligibility,
       intake: "120",
       mode: "Full-time",
-      tuitionFee: "₹85,000",
+      tuitionFee: "₹95,000",
       enquiryValue: "bca"
     },
     ...specialisationsList.map(spec => ({
@@ -57,7 +57,7 @@ export default function ItComputerSciencePicker() {
       eligibility: bcaEligibility,
       intake: "120",
       mode: "Full-time",
-      tuitionFee: "₹85,000",
+      tuitionFee: "₹95,000",
       enquiryValue: "bca"
     })),
     {
@@ -66,7 +66,7 @@ export default function ItComputerSciencePicker() {
       eligibility: bcaEligibility,
       intake: "120",
       mode: "Full-time",
-      tuitionFee: "₹85,000",
+      tuitionFee: "₹95,000",
       enquiryValue: "bca"
     },
     ...specialisationsList.map(spec => ({
@@ -76,7 +76,7 @@ export default function ItComputerSciencePicker() {
       eligibility: bcaEligibility,
       intake: "120",
       mode: "Full-time",
-      tuitionFee: "₹85,000",
+      tuitionFee: "₹95,000",
       enquiryValue: "bca"
     }))
   ];
@@ -88,7 +88,7 @@ export default function ItComputerSciencePicker() {
       eligibility: mcaEligibility,
       intake: "120",
       mode: "Full-time",
-      tuitionFee: "₹1,25,000",
+      tuitionFee: "₹1,35,000",
       enquiryValue: "mca"
     },
     ...specialisationsList.map(spec => ({
@@ -98,7 +98,7 @@ export default function ItComputerSciencePicker() {
       eligibility: mcaEligibility,
       intake: "120",
       mode: "Full-time",
-      tuitionFee: "₹1,25,000",
+      tuitionFee: "₹1,35,000",
       enquiryValue: "mca"
     }))
   ];

@@ -563,3 +563,17 @@ img, svg {
 .author-tooltip {
   pointer-events: auto !important;
 }
+/* Story, event, and news article rich-text hyperlink styles */
+article .section-body a,
+article details div a,
+.rich-text a {
+  color: #0caadd;
+  text-decoration: none;
+  transition: color 150ms ease, text-decoration 150ms ease;
+}
+
+article .section-body a:hover,
+article details div a:hover,
+.rich-text a:hover {
+  text-decoration: underline;
+}

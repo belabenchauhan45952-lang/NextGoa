@@ -48,14 +48,14 @@ export default function ProgrammePicker() {
     }
   }, []);
 
-  const btechEligibility = "10+2 Science (Physics & Maths compulsory) with Chem/CS/IT + 45% (40% Reserved).";
+  const btechEligibility = "Candidate shall have passed 12th Science with Physics and Mathematics as compulsory subject with Chemistry/Computer Science/Information practice/Computer with 45% for general and 40% for reserved category in theory or theory + practical  from recognized board.";
 
   const programmeData: Record<string, any[]> = {
     "Diploma": [
       { 
         title: "Diploma in Engineering (D.E.)\nComputer Engineering", 
         duration: "3 Years", 
-        eligibility: "10th Pass with English, Maths, and Science from a recognized board.", 
+        eligibility: "Candidate shall have passed 10th Examination with English, Maths and Science subjects from a recognized board.", 
         intake: "120", 
         mode: "Full-time", 
         tuitionFee: "₹65,000",
@@ -70,7 +70,7 @@ export default function ProgrammePicker() {
         eligibility: btechEligibility, 
         intake: "120", 
         mode: "Full-time", 
-        tuitionFee: "₹1,45,000",
+        tuitionFee: "₹1,60,000",
         specialisations: [],
         enquiryValue: "btech-cse"
       },
@@ -87,7 +87,7 @@ export default function ProgrammePicker() {
         eligibility: btechEligibility,
         intake: "120",
         mode: "Full-time",
-        tuitionFee: "₹1,45,000",
+        tuitionFee: "₹1,60,000",
         specialisations: [],
         enquiryValue: item.val
       }))
@@ -96,10 +96,10 @@ export default function ProgrammePicker() {
       { 
         title: "B.Tech. - Lateral Entry\nComputer Science and Engineering", 
         duration: "3 Years", 
-        eligibility: "Diploma Engineering with 45% (40% Reserved). Direct admission to 2nd year B.Tech.", 
+        eligibility: "Candidate shall have passed Diploma engineering with 45% for Open Category and 40% for( SC/ST/SEBC) and can get admission in 2nd year of B.Tech (Lateral Entry) (Candidate can change the specialization from diploma to degree)", 
         intake: "120", 
         mode: "Full-time", 
-        tuitionFee: "₹1,45,000",
+        tuitionFee: "₹1,60,000",
         specialisations: [],
         enquiryValue: "btech-lateral"
       }

@@ -304,7 +304,7 @@ export default async function EventDetailPage({
                         {section.title}
                       </h2>
                       <div
-                        className="section-body text-ink/80"
+                        className="section-body text-ink/80 [&_a]:text-[#0caadd] [&_a:hover]:underline transition-all"
                         dangerouslySetInnerHTML={{
                           __html: section.details,
                         }}
@@ -318,7 +318,7 @@ export default async function EventDetailPage({
                         {section.title}
                       </h3>
                       <div
-                        className="section-body text-ink/80"
+                        className="section-body text-ink/80 [&_a]:text-[#0caadd] [&_a:hover]:underline transition-all"
                         dangerouslySetInnerHTML={{
                           __html: section.details,
                         }}
@@ -332,7 +332,7 @@ export default async function EventDetailPage({
                         {section.title}
                       </h4>
                       <div
-                        className="section-body text-ink/80"
+                        className="section-body text-ink/80 [&_a]:text-[#0caadd] [&_a:hover]:underline transition-all"
                         dangerouslySetInnerHTML={{
                           __html: section.details,
                         }}
@@ -343,7 +343,7 @@ export default async function EventDetailPage({
                   return (
                     <div
                       key={index}
-                      className="section-body text-ink/80"
+                      className="section-body text-ink/80 [&_a]:text-[#0caadd] [&_a:hover]:underline transition-all"
                       dangerouslySetInnerHTML={{
                         __html: section.details,
                       }}
@@ -370,7 +370,7 @@ export default async function EventDetailPage({
                         {faq.question}
                       </summary>
                       <div
-                        className="px-6 py-5"
+                        className="px-6 py-5 [&_a]:text-[#0caadd] [&_a:hover]:underline transition-all"
                         dangerouslySetInnerHTML={{
                           __html: faq.answer,
                         }}

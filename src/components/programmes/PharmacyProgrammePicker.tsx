@@ -12,19 +12,19 @@ export default function PharmacyProgrammePicker() {
       { 
         title: "Bachelor of Pharmacy\n(B.Pharm.)", 
         duration: "4 Years", 
-        eligibility: "10+2 Science (PCM or PCB) from a recognized board.", 
+        eligibility: "Candidate shall have passed 12th Examination in Science stream with Physics,Chemistry and Maths (PCM) OR Physics,Chemistry and Biology (PCB) subjects from a recognized board.", 
         intake: "100", 
         mode: "Full-time",
-        tuitionFee: "₹1,35,000",
+        tuitionFee: "₹1,70,000",
         enquiryValue: "bpharm"
       },
       { 
         title: "B.Pharm. - Lateral Entry", 
         duration: "3 Years", 
-        eligibility: "Diploma in Pharmacy from a recognized university.", 
+        eligibility: "Candidate shall have passed Diploma in Pharmacy from a recognized university.", 
         intake: "10", 
         mode: "Full-time",
-        tuitionFee: "₹1,35,000",
+        tuitionFee: "₹1,70,000",
         enquiryValue: "bpharm-lateral"
       }
     ],

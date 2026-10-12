@@ -22,20 +22,20 @@ export default function ManagementProgrammePicker() {
       { 
         title: "Bachelor of Business\nAdministration (BBA)", 
         duration: "3 Years", 
-        eligibility: "10+2 in any stream with English from a recognized board.", 
+        eligibility: "Candidate shall have passed 12th Examination in any stream (Science/Commerce/Arts) with English subject from a recognized board.", 
         intake: "120", 
         mode: "Full-time",
-        tuitionFee: "₹90,000",
+        tuitionFee: "₹1,10,000",
         specialisations: [],
         enquiryValue: "bba"
       },
       ...["General", "Data Analytics", "Financial Management", "Human Resource", "Marketing", "Logistics and Supply Chain Management"].map(spec => ({
         title: `BBA Honours (NEP 2020)\n${spec}`, 
         duration: "4 Years", 
-        eligibility: "10+2 in any stream with English from a recognized board.", 
+        eligibility: "Candidate shall have passed 12th Examination in any stream (Science/Commerce/Arts) with English subject from a recognized board.", 
         intake: "60", 
         mode: "Full-time",
-        tuitionFee: "₹90,000",
+        tuitionFee: "₹1,10,000",
         specialisations: [],
         enquiryValue: "bba-hons"
       }))
@@ -44,10 +44,10 @@ export default function ManagementProgrammePicker() {
       ...["General", "Business Analytics", "Finance", "Human Resource", "Marketing", "Operations Management"].map(spec => ({
         title: `Master of Business\nAdministration (MBA) - ${spec}`, 
         duration: "2 Years", 
-        eligibility: "Graduation with 50% (45% for Reserved category) from a recognized university.", 
+        eligibility: "Candidate shall have passed Graduation with minimum of 50% for Open category (45% for Reserved category) from a recognized university.", 
         intake: "60", 
         mode: "Full-time",
-        tuitionFee: "₹1,45,000",
+        tuitionFee: "₹2,00,000",
         specialisations: [],
         enquiryValue: "mba"
       }))
@@ -63,7 +63,7 @@ export default function ManagementProgrammePicker() {
         enquiryValue: "phd"
       },
       {
-        title: "Doctor of Philosophy - Human Resource",
+        title: "Doctor of Philosophy - Human Resource", 
         duration: "3 Years",
         eligibility: "Master's in a relevant subject with 55% (general) / 50% (SC/ST/OBC-NCL / EWS / differently-abled), or 4-yr Bachelor's with 75%.",
         intake: "30",

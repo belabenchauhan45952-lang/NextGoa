@@ -22,25 +22,25 @@ export default function NursingProgrammePicker() {
       { 
         title: "General Nursing and\nMidwifery (G.N.M)", 
         duration: "3 Years", 
-        eligibility: "10+2 in any stream with English (40% Gen/EWS, 35% Reserved) OR 10+2 with English and 40% in vocational ANM.", 
+        eligibility: "Candidate shall have passed 12th Examination in any stream (Science,Commerce,Arts) with English with minimum 40% for General Category, 40% for EWS and 35% for Reserved category from a recognized board\nOR\nCandidate shall have passed 12th Examination with English having 40% in vocational ANM Course from the school recognized by Indian Nursing Council.", 
         intake: "40", 
         mode: "Full-time",
-        tuitionFee: "₹1,10,000",
+        tuitionFee: "₹1,55,000",
         enquiryValue: "gnm"
       },
       { 
         title: "Bachelor of Science\nin Nursing", 
         duration: "4 Years", 
-        eligibility: "10+2 Science (PCB) with English. Minimum 45% (40% Reserved).", 
+        eligibility: "Candidate shall have passed 12th Examination in Science stream with Physics, Chemistry and Biology as compulsory subjects with minimum 45% for general category, 45% For EWS and 40% for reserved category in theory + practical (PCB) with English as a compulsory subject from a recognized board. \nNote - Apart from this candidate shall have appeared NEET examination in the concurrent year\nAdmission will be granted based on the entrance examination conducted by the University.", 
         intake: "100", 
         mode: "Full-time",
-        tuitionFee: "₹1,80,000",
+        tuitionFee: "₹2,10,000",
         enquiryValue: "bsc-nursing"
       },
       { 
         title: "Post Basic Bachelor of Science\nin Nursing (PB-B.Sc.)", 
         duration: "2 Years", 
-        eligibility: "GNM pass from INC/State Council recognized institution. Registered as Nurse & Midwife.", 
+        eligibility: "Candidate shall have passed GNM Examination as regular candidate from an institution recognized by Gujarat Nursing Council/ Indian Nursing Council.\n\nAlso candidate should be registered as Registered Nurse & Registered Midwife with the Gujarat Nursing Council or equivalent State Nursing Council", 
         intake: "40",   
         mode: "Full-time",
         tuitionFee: "₹1,20,000",
