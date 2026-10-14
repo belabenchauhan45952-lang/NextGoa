@@ -549,13 +549,6 @@ export const contactsData: ContactsData =
         "email": ""
       },
       {
-        "city": "Ballari",
-        "contactPerson": "Parul University",
-        "address": "3rd Floor, Vybhavi Arcade, Besides Aahar Udipi Hotel, Infantry Road, Cantonment, Ballari, Ballari (Dist.), Karnataka \u2013 583104.",
-        "number": "+91 70226 68666",
-        "email": ""
-      },
-      {
         "city": "Belagavi",
         "contactPerson": "Parul University",
         "address": "Parul University Admission Office, CTS No. 838, D02, 3rd Floor, Shiva Durga Apartment, 2nd Cross, Bhagya Nagar, Belagavi, Belagavi (Dt), Karnataka \u2013 590006.",
