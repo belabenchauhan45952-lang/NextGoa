@@ -587,7 +587,7 @@ export const contactsData: ContactsData =
         "city": "Hosapete",
         "contactPerson": "Parul University",
         "address": "D.No. 158, Ground Floor,Lakshmi Pathi Shetty Nilaya, Patel Nagar, 3rd Cross, Opposite Gopinath School and PU College, Hosapete, Ballari District, \u2013 583201, Karnataka.",
-        "number": "+91 8639569109",
+        "number": "+91 70226 68666",
         "email": ""
       },
       {
