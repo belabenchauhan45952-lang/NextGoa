@@ -542,6 +542,13 @@ export const contactsData: ContactsData =
     ],
     "KARNATAKA": [
       {
+        "city": "Bagalkot",
+        "contactPerson": "Parul University",
+        "address": "",
+        "number": "+91 63618 96287",
+        "email": ""
+      },
+      {
         "city": "Ballari",
         "contactPerson": "Parul University",
         "address": "3rd Floor, Vybhavi Arcade, Besides Aahar Udipi Hotel, Infantry Road, Cantonment, Ballari, Ballari (Dist.), Karnataka \u2013 583104.",
@@ -584,10 +591,24 @@ export const contactsData: ContactsData =
         "email": ""
       },
       {
+        "city": "Hosapete",
+        "contactPerson": "Parul University",
+        "address": "D.No. 158, Ground Floor,Lakshmi Pathi Shetty Nilaya, Patel Nagar, 3rd Cross, Opposite Gopinath School and PU College, Hosapete, Ballari District, \u2013 583201, Karnataka.",
+        "number": "+91 8639569109",
+        "email": ""
+      },
+      {
         "city": "Hubli",
         "contactPerson": "Parul University",
         "address": "Parul Admission Office, 225, Brundavan, Ground Floor, Behind Base PU College, 2nd Phase Akshay Colony, Vidyanagar, Hubli \u2013 580030, Karnataka.",
         "number": "+91 7090845529",
+        "email": ""
+      },
+      {
+        "city": "Karwar",
+        "contactPerson": "Parul University",
+        "address": "",
+        "number": "+91 84315 51452",
         "email": ""
       },
       {
@@ -697,10 +718,17 @@ export const contactsData: ContactsData =
         "email": ""
       },
       {
-        "city": "Hyderabad",
+        "city": "Hyderabad - Branch Office",
+        "contactPerson": "Parul University",
+        "address": "7th Floor, Pranava Group, Beside Harsha Toyota Showroom, Land Mark Residency, Kothaguda,Hyderabad, Telangana \u2013 500084.",
+        "number": "+91 90363 24123 +91 91481 09123",
+        "email": ""
+      },
+      {
+        "city": "Hyderabad - Regional Office",
         "contactPerson": "Mrs. Sailaja-Parul University",
         "address": "Flat No 101, Metro Residency, Beside Lake View Guest House, Raj Bhavan Road,Somajiguda, Ranga Reddy(Dist.) Telangana-509001",
-        "number": "+91 9676685308 +91 9849973695",
+        "number": "+91 96766 85308 +91 98499 73695",
         "email": "rcc.telangana@paruluniversity.ac.in"
       },
       {
@@ -821,6 +849,13 @@ export const contactsData: ContactsData =
         "contactPerson": "Sri Lakshmi",
         "address": "Parul University Office, Plot No. 22, Ground Floor, Near Regional Science Centre, Bhubaneswar \u2013 751013, Odisha.",
         "number": "+91 7487871609 +91 6300658513",
+        "email": "-"
+      },
+      {
+        "city": "Rourkela",
+        "contactPerson": "Parul University",
+        "address": "",
+        "number": "+91 77802 04637",
         "email": "-"
       },
       {
