@@ -711,9 +711,9 @@ export const contactsData: ContactsData =
         "email": ""
       },
       {
-        "city": "Hyderabad - Branch Office",
+        "city": "Hyderabad - Online Program Admissions Office",
         "contactPerson": "Parul University",
-        "address": "7th Floor, Pranava Group, Beside Harsha Toyota Showroom, Land Mark Residency, Kothaguda,Hyderabad, Telangana \u2013 500084.",
+        "address": "7th Floor, Pranava Group, Beside Harsha Toyota Showroom, Land Mark Residency, Kothaguda, Hyderabad, Telangana \u2013 500084.",
         "number": "+91 90363 24123 +91 91481 09123",
         "email": ""
       },
