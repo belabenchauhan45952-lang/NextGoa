@@ -13,10 +13,9 @@ import Image from "next/image";
 import FacultyBlogs from "@/components/programmes/FacultyBlogs";
 
 export const metadata: Metadata = {
-  title: { absolute: "IT & Computer Science | Parul University Goa" },
-  description: "Explore our IT and Computer Science programmes.",
+  title: { absolute: "Faculty of IT & Computer Science | Parul University Goa" },
+  description: "Explore IT and Computer Science programs at Parul University Goa with specializations in AI, Machine Learning, Cybersecurity, Data Science, Software Development, and emerging technologies.",
   alternates: { canonical: "/faculty/it-cs" },
-  
 };
 
 export const revalidate = 60; // Revalidate for blogs
