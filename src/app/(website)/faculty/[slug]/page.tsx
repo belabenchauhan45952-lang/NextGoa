@@ -52,6 +52,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 
 
+  if (slug === "doctorate-programs") {
+    return {
+      title: { absolute: "Doctorate (PhD) Programs | Research & Innovation | Parul University Goa" },
+      description: "Discover doctoral and PhD programs at Parul University Goa, designed to foster advanced research, innovation, academic excellence, and interdisciplinary learning across diverse fields.",
+      alternates: { canonical: `/faculty/doctorate-programs` },
+    };
+  }
+
   if (slug === "applied-and-health-sciences") {
     return {
       title: { absolute: "Applied and Health Sciences Programs - Parul University Goa" },
